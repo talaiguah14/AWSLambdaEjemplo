@@ -1,0 +1,16 @@
+﻿version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      dotnet: 8.0
+  build:
+    commands:
+      - echo "Compilando Lambda en .NET 8"
+      - dotnet tool install -g Amazon.Lambda.Tools
+      - dotnet restore
+      - dotnet lambda package --output-package output/function.zip
+
+artifacts:
+  files:
+    - output/function.zip
