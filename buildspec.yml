@@ -6,8 +6,11 @@ phases:
       dotnet: 8.0
   build:
     commands:
-      - echo "Instalando herramientas..."
+      - echo "Instalando Amazon.Lambda.Tools globalmente..."
       - dotnet tool install -g Amazon.Lambda.Tools
+      - export PATH="$PATH:/root/.dotnet/tools"  # Necesario para usar tools en CodeBuild
+      - echo "Creando carpeta de salida..."
+      - mkdir -p output
       - echo "Restaurando dependencias..."
       - dotnet restore AWSLambdaEjemplo/AWSLambdaEjemplo.csproj
       - echo "Empaquetando Lambda..."
