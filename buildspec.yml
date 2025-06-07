@@ -15,7 +15,7 @@ phases:
       - echo "Restaurando dependencias..."
       - dotnet restore AWSLambdaEjemplo/AWSLambdaEjemplo.csproj
       - echo "Empaquetando Lambda..."
-      - dotnet lambda package --project-location AWSLambdaEjemplo/AWSLambdaEjemplo.csproj --output-package output/function.zip
+      - dotnet lambda package --project-location AWSLambdaEjemplo --output-package output/function.zip
 
 artifacts:
   files:
