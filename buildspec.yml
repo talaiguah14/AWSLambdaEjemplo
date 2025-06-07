@@ -1,0 +1,18 @@
+﻿version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      dotnet: 8.0
+  build:
+    commands:
+      - echo "Instalando herramientas..."
+      - dotnet tool install -g Amazon.Lambda.Tools
+      - echo "Restaurando dependencias..."
+      - dotnet restore AWSLambdaEjemplo/AWSLambdaEjemplo.csproj
+      - echo "Empaquetando Lambda..."
+      - dotnet lambda package --project-location AWSLambdaEjemplo/AWSLambdaEjemplo.csproj --output-package output/function.zip
+
+artifacts:
+  files:
+    - output/function.zip
