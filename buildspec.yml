@@ -4,11 +4,12 @@ phases:
   install:
     runtime-versions:
       dotnet: 8.0
+    commands:
+      - echo "Instalando herramientas..."
+      - dotnet tool install -g Amazon.Lambda.Tools
+      - export PATH="$PATH:/root/.dotnet/tools"
   build:
     commands:
-      - echo "Instalando Amazon.Lambda.Tools globalmente..."
-      - dotnet tool install -g Amazon.Lambda.Tools
-      - export PATH="$PATH:/root/.dotnet/tools"  # Necesario para usar tools en CodeBuild
       - echo "Creando carpeta de salida..."
       - mkdir -p output
       - echo "Restaurando dependencias..."
